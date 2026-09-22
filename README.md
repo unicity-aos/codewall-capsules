@@ -36,6 +36,33 @@ enrollment. An existing but broken runtime is not a successful prerequisite chec
 Initial artifacts target the staging control plane. Public download availability
 does not change their enrollment authority or make them production-plane builds.
 
+## Install after a release is published
+
+Install and sign in to Claude Code first. Obtain an enrollment token from the
+administrator of the intended staging tenant, then run:
+
+```sh
+curl --proto '=https' --tlsv1.2 -fsSL \
+  https://github.com/unicity-aos/codewall-capsules/releases/latest/download/install.sh \
+  | sh -s -- --principal claude-code
+```
+
+The installer resolves current stable AOS, provisions the Claude Oracle and its
+`claude-code` principal, and downloads Codewall artifacts from this repository.
+It does not initialize the full default AOS distribution. Enter the token at the
+hidden prompt; it is not a command-line argument. An installation message does
+not by itself prove enrollment: confirm the endpoint in the Codewall console.
+
+This public installer supports **Claude Code only**, on Apple Silicon/Intel macOS
+and ARM64/x86-64 GNU Linux. Windows and musl Linux artifacts are not provided.
+`--keep-runtime` explicitly skips AOS/Oracle updates and requires an already
+working Claude setup. Older macOS systems can use the CLI without unsupported
+optional desktop/filesystem components.
+
+The installed capsules protect traffic routed through AOS. Enforcing every
+native Claude tool call additionally requires the administrator-controlled
+Claude `PreToolUse` gate; this bootstrap does not deploy that gate automatically.
+
 ## Reporting problems
 
 Use this repository's issues for installer and distribution problems. Include the
