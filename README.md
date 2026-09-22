@@ -6,7 +6,7 @@ not contain the private source tree.
 
 ## Availability
 
-[Codewall v0.1.0 is available](https://github.com/unicity-aos/codewall-capsules/releases/tag/v0.1.0)
+[Codewall releases are available](https://github.com/unicity-aos/codewall-capsules/releases/latest)
 for the staging control plane. Download the installer with the command below.
 Publication is not a claim of successful enrollment into your tenant; confirm
 your endpoint in the Codewall console after installation.
@@ -45,7 +45,7 @@ administrator of the intended staging tenant, then run:
 ```sh
 curl --proto '=https' --tlsv1.2 -fsSL \
   https://github.com/unicity-aos/codewall-capsules/releases/latest/download/install.sh \
-  | sh -s -- --principal claude-code
+  | sh
 ```
 
 The installer resolves current stable AOS, provisions the Claude Oracle and its
@@ -53,6 +53,11 @@ The installer resolves current stable AOS, provisions the Claude Oracle and its
 It does not initialize the full default AOS distribution. Enter the token at the
 hidden prompt; it is not a command-line argument. An installation message does
 not by itself prove enrollment: confirm the endpoint in the Codewall console.
+
+No principal argument is required. To use a different existing principal, pass
+`--principal NAME`, or `--choose-principal` for an interactive list of enabled
+principals. These overrides do not reconfigure which principal the Claude plugin
+uses; custom setups must already route their Claude session to that principal.
 
 This public installer supports **Claude Code only**, on Apple Silicon/Intel macOS
 and ARM64/x86-64 GNU Linux. Windows and musl Linux artifacts are not provided.
