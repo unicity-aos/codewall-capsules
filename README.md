@@ -6,11 +6,12 @@ not contain the private source tree.
 
 ## Availability
 
-The public distribution pipeline is being connected. **No installable release has
-been published here yet.** Do not interpret this repository's existence as a
-successful installation or enrollment test.
+[Codewall v0.1.0 is available](https://github.com/unicity-aos/codewall-capsules/releases/tag/v0.1.0)
+for the staging control plane. Download the installer with the command below.
+Publication is not a claim of successful enrollment into your tenant; confirm
+your endpoint in the Codewall console after installation.
 
-Published releases will contain:
+Published releases contain:
 
 - `install.sh`, the public bootstrap;
 - a native `codewall-install` for each supported macOS/Linux target;
@@ -36,7 +37,7 @@ enrollment. An existing but broken runtime is not a successful prerequisite chec
 Initial artifacts target the staging control plane. Public download availability
 does not change their enrollment authority or make them production-plane builds.
 
-## Install after a release is published
+## Install
 
 Install and sign in to Claude Code first. Obtain an enrollment token from the
 administrator of the intended staging tenant, then run:
